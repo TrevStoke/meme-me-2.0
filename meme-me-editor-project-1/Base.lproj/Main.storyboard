@@ -17,33 +17,72 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZBd-aB-vik">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
-                                <items>
-                                    <barButtonItem title="Album" id="6Qe-yJ-KLI"/>
-                                    <barButtonItem systemItem="camera" id="bmF-or-H2m"/>
-                                </items>
-                            </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AVr-RN-GDF">
-                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AVr-RN-GDF">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="Aac-7y-DaP"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Aac-7y-DaP"/>
+                                    </mask>
+                                </variation>
                             </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZBd-aB-vik">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem title="Album" id="6Qe-yJ-KLI">
+                                        <connections>
+                                            <action selector="pickImageFromAlbum:" destination="BYZ-38-t0r" id="hXD-ZN-y3A"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="camera" id="bmF-or-H2m">
+                                        <connections>
+                                            <action selector="pickImageWithCamera:" destination="BYZ-38-t0r" id="xfM-gz-W4i"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="AVr-RN-GDF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="0sy-qh-daG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ZBd-aB-vik" secondAttribute="trailing" constant="-20" id="5Pz-a0-UKQ"/>
                             <constraint firstItem="AVr-RN-GDF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Et9-EI-hEh"/>
                             <constraint firstItem="ZBd-aB-vik" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="FPO-Qk-KOH"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZBd-aB-vik" secondAttribute="bottom" id="HPB-id-QTy"/>
+                            <constraint firstItem="AVr-RN-GDF" firstAttribute="trailing" secondItem="ZBd-aB-vik" secondAttribute="trailing" id="NT9-8U-NCr"/>
+                            <constraint firstItem="AVr-RN-GDF" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="TVQ-lM-V2y"/>
                             <constraint firstItem="AVr-RN-GDF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="216" id="b7n-y7-6s7"/>
+                            <constraint firstItem="AVr-RN-GDF" firstAttribute="trailing" secondItem="ZBd-aB-vik" secondAttribute="trailing" id="e6i-a7-gGd"/>
+                            <constraint firstItem="AVr-RN-GDF" firstAttribute="leading" secondItem="ZBd-aB-vik" secondAttribute="leading" id="geW-Jl-EmH"/>
+                            <constraint firstItem="ZBd-aB-vik" firstAttribute="top" secondItem="AVr-RN-GDF" secondAttribute="bottom" constant="192" id="ipI-3Q-DAP"/>
+                            <constraint firstItem="AVr-RN-GDF" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="oYw-N7-Y8O"/>
                             <constraint firstItem="AVr-RN-GDF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="r1I-8y-PDm"/>
+                            <constraint firstItem="AVr-RN-GDF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="216" id="svd-HS-BNf"/>
+                            <constraint firstItem="AVr-RN-GDF" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="wzc-Zt-mfW"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="0sy-qh-daG"/>
+                                <exclude reference="Et9-EI-hEh"/>
+                                <exclude reference="b7n-y7-6s7"/>
+                                <exclude reference="e6i-a7-gGd"/>
+                                <exclude reference="r1I-8y-PDm"/>
+                                <exclude reference="svd-HS-BNf"/>
+                                <exclude reference="wzc-Zt-mfW"/>
+                                <exclude reference="ipI-3Q-DAP"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="cameraButton" destination="bmF-or-H2m" id="yu1-0J-E5j"/>
+                        <outlet property="pickedImage" destination="AVr-RN-GDF" id="AVp-T1-m6T"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="416" y="475"/>
         </scene>
     </scenes>
 </document>
