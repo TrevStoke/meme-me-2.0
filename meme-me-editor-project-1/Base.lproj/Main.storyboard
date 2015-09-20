@@ -24,12 +24,21 @@
                                     <barButtonItem systemItem="camera" id="bmF-or-H2m"/>
                                 </items>
                             </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AVr-RN-GDF">
+                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="Aac-7y-DaP"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="ZBd-aB-vik" secondAttribute="trailing" constant="-20" id="5Pz-a0-UKQ"/>
+                            <constraint firstItem="AVr-RN-GDF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Et9-EI-hEh"/>
                             <constraint firstItem="ZBd-aB-vik" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="FPO-Qk-KOH"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZBd-aB-vik" secondAttribute="bottom" id="HPB-id-QTy"/>
+                            <constraint firstItem="AVr-RN-GDF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="216" id="b7n-y7-6s7"/>
+                            <constraint firstItem="AVr-RN-GDF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="r1I-8y-PDm"/>
                         </constraints>
                     </view>
                 </viewController>
