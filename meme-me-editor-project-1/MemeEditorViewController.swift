@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeEditorViewController.swift
 //  meme-me-editor-project-1
 //
 //  Created by Trevor Adams on 20/09/2015.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MemeEditorViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
