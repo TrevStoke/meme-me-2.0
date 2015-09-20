@@ -43,5 +43,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         dismissViewControllerAnimated(true, completion: nil)
     }
 
+    @IBAction func cancelMeme(sender: AnyObject) {
+        pickedImage.image = nil
+        //TODO: cancel text labels
+    }
 }
 
