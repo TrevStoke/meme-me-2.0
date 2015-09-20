@@ -8,8 +8,9 @@
 
 import UIKit
 
-class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var cameraButton: UIBarButtonItem!
+    @IBOutlet weak var topLabel: UILabel!
 
     @IBOutlet weak var pickedImage: UIImageView!
     
