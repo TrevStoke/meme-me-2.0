@@ -58,21 +58,10 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="Top Text" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wus-aQ-eux">
-                                <rect key="frame" x="20" y="85" width="560" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" enablesReturnKeyAutomatically="YES"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Bottom Text" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0eP-CZ-hvY">
-                                <rect key="frame" x="20" y="502" width="560" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="AVr-RN-GDF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="0sy-qh-daG"/>
-                            <constraint firstItem="Wus-aQ-eux" firstAttribute="top" secondItem="vKc-xb-Dhl" secondAttribute="bottom" constant="21" id="1cY-oN-bAY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vKc-xb-Dhl" secondAttribute="trailing" constant="-20" id="4rA-Yg-6Wb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ZBd-aB-vik" secondAttribute="trailing" constant="-20" id="5Pz-a0-UKQ"/>
                             <constraint firstItem="AVr-RN-GDF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Et9-EI-hEh"/>
@@ -84,15 +73,10 @@
                             <constraint firstItem="vKc-xb-Dhl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="Xsb-eV-A3h"/>
                             <constraint firstItem="AVr-RN-GDF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="216" id="b7n-y7-6s7"/>
                             <constraint firstItem="AVr-RN-GDF" firstAttribute="trailing" secondItem="ZBd-aB-vik" secondAttribute="trailing" id="e6i-a7-gGd"/>
-                            <constraint firstItem="0eP-CZ-hvY" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="fXJ-1y-Lex"/>
                             <constraint firstItem="AVr-RN-GDF" firstAttribute="leading" secondItem="ZBd-aB-vik" secondAttribute="leading" id="geW-Jl-EmH"/>
-                            <constraint firstItem="ZBd-aB-vik" firstAttribute="top" secondItem="0eP-CZ-hvY" secondAttribute="bottom" constant="24" id="gzH-2X-Upc"/>
-                            <constraint firstItem="0eP-CZ-hvY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="hha-IG-I0O"/>
                             <constraint firstItem="ZBd-aB-vik" firstAttribute="top" secondItem="AVr-RN-GDF" secondAttribute="bottom" constant="192" id="ipI-3Q-DAP"/>
                             <constraint firstItem="AVr-RN-GDF" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="oYw-N7-Y8O"/>
-                            <constraint firstItem="Wus-aQ-eux" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="qyF-PY-0lh"/>
                             <constraint firstItem="AVr-RN-GDF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="r1I-8y-PDm"/>
-                            <constraint firstItem="Wus-aQ-eux" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="rbp-ol-aJT"/>
                             <constraint firstItem="AVr-RN-GDF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="216" id="svd-HS-BNf"/>
                             <constraint firstItem="AVr-RN-GDF" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="wzc-Zt-mfW"/>
                         </constraints>
