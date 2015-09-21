@@ -28,15 +28,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     override func viewWillAppear(animated: Bool) {
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         
-        let memeTextAttributes = [
-            NSStrokeColorAttributeName: UIColor.blackColor(),
-            NSForegroundColorAttributeName: UIColor.whiteColor(),
-            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-            NSStrokeWidthAttributeName: -3.0,
-        ]
-        
-        topTextField.defaultTextAttributes = memeTextAttributes
-        bottomTextField.defaultTextAttributes = memeTextAttributes
+        configureTextFields()
     }
     
     
@@ -75,7 +67,43 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        textField.text = textField.text?.uppercaseString
         return true
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        switch(textField.text!) {
+        case "TOP": textField.text = ""
+        case "BOTTOM": textField.text = ""
+        default: break
+        }
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        if textField.text?.characters.count == 0 {
+            switch(textField) {
+            case topTextField: textField.text = "TOP"
+            case bottomTextField: textField.text = "BOTTOM"
+            default: textField.text = "YOUR MEME HERE"
+            }
+        }
+        
+        textField.text = textField.text?.uppercaseString
+    }
+    
+    func configureTextFields() {
+        let memeTextAttributes = [
+            NSStrokeColorAttributeName: UIColor.blackColor(),
+            NSForegroundColorAttributeName: UIColor.whiteColor(),
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            NSStrokeWidthAttributeName: -3.0,
+        ]
+        
+        topTextField.defaultTextAttributes = memeTextAttributes
+        bottomTextField.defaultTextAttributes = memeTextAttributes
+        
+        topTextField.textAlignment = NSTextAlignment.Center
+        bottomTextField.textAlignment = NSTextAlignment.Center
     }
     
 }
