@@ -23,20 +23,20 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         bottomTextField.delegate = self
         resetTextFields()
         
-        let memeTextAttributes = [
-            NSStrokeColorAttributeName: UIColor.blackColor(),
-            NSForegroundColorAttributeName: UIColor.whiteColor(),
-            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-            NSStrokeWidthAttributeName: 3.0
-        ]
-        
-        topTextField.defaultTextAttributes = memeTextAttributes
-        bottomTextField.defaultTextAttributes = memeTextAttributes
-        
     }
     
     override func viewWillAppear(animated: Bool) {
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+        
+        let memeTextAttributes = [
+            NSStrokeColorAttributeName: UIColor.blackColor(),
+            NSForegroundColorAttributeName: UIColor.whiteColor(),
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            NSStrokeWidthAttributeName: -3.0,
+        ]
+        
+        topTextField.defaultTextAttributes = memeTextAttributes
+        bottomTextField.defaultTextAttributes = memeTextAttributes
     }
     
     
@@ -70,12 +70,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func resetTextFields() {
-        topTextField.text = "Top"
-        bottomTextField.text = "Bottom"
+        topTextField.text = "TOP"
+        bottomTextField.text = "BOTTOM"
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         return true
     }
+    
 }
-

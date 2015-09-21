@@ -28,6 +28,11 @@
                                     </mask>
                                 </variation>
                             </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TOP" allowsEditingTextAttributes="YES" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xjd-t5-anr">
+                                <rect key="frame" x="20" y="77" width="560" height="16.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZBd-aB-vik">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
@@ -58,12 +63,23 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mfv-Zq-Dmp">
+                                <rect key="frame" x="20" y="521" width="560" height="17"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="AVr-RN-GDF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="0sy-qh-daG"/>
+                            <constraint firstItem="ZBd-aB-vik" firstAttribute="top" secondItem="Mfv-Zq-Dmp" secondAttribute="bottom" constant="18" id="26W-AS-P6v"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vKc-xb-Dhl" secondAttribute="trailing" constant="-20" id="4rA-Yg-6Wb"/>
+                            <constraint firstItem="Xjd-t5-anr" firstAttribute="top" secondItem="vKc-xb-Dhl" secondAttribute="bottom" constant="13" id="58y-OO-484"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ZBd-aB-vik" secondAttribute="trailing" constant="-20" id="5Pz-a0-UKQ"/>
+                            <constraint firstItem="Mfv-Zq-Dmp" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="5Ug-em-4eD"/>
+                            <constraint firstItem="Xjd-t5-anr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="DVX-AR-KZ0"/>
+                            <constraint firstItem="Xjd-t5-anr" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="EE7-Rn-uB7"/>
                             <constraint firstItem="AVr-RN-GDF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Et9-EI-hEh"/>
                             <constraint firstItem="ZBd-aB-vik" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="FPO-Qk-KOH"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZBd-aB-vik" secondAttribute="bottom" id="HPB-id-QTy"/>
@@ -74,6 +90,7 @@
                             <constraint firstItem="AVr-RN-GDF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="216" id="b7n-y7-6s7"/>
                             <constraint firstItem="AVr-RN-GDF" firstAttribute="trailing" secondItem="ZBd-aB-vik" secondAttribute="trailing" id="e6i-a7-gGd"/>
                             <constraint firstItem="AVr-RN-GDF" firstAttribute="leading" secondItem="ZBd-aB-vik" secondAttribute="leading" id="geW-Jl-EmH"/>
+                            <constraint firstItem="Mfv-Zq-Dmp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="i15-BN-IID"/>
                             <constraint firstItem="ZBd-aB-vik" firstAttribute="top" secondItem="AVr-RN-GDF" secondAttribute="bottom" constant="192" id="ipI-3Q-DAP"/>
                             <constraint firstItem="AVr-RN-GDF" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="oYw-N7-Y8O"/>
                             <constraint firstItem="AVr-RN-GDF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="r1I-8y-PDm"/>
@@ -94,8 +111,10 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="bottomTextField" destination="Mfv-Zq-Dmp" id="HlS-ce-ZIZ"/>
                         <outlet property="cameraButton" destination="bmF-or-H2m" id="yu1-0J-E5j"/>
                         <outlet property="pickedImage" destination="AVr-RN-GDF" id="AVp-T1-m6T"/>
+                        <outlet property="topTextField" destination="Xjd-t5-anr" id="LA5-Nm-qoO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
