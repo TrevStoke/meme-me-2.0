@@ -29,7 +29,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     override func viewWillAppear(animated: Bool) {
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
-        
         configureTextFields()
         self.subscribeToKeyboardNotifications()
     }
@@ -75,7 +74,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        textField.text = textField.text?.uppercaseString
         return true
     }
     
@@ -96,8 +94,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             default: textField.text = "YOUR MEME HERE"
             }
         }
-        
-        textField.text = textField.text?.uppercaseString
     }
     
     func configureTextFields() {

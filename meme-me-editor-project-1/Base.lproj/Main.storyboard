@@ -29,7 +29,7 @@
                                 </variation>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TOP" allowsEditingTextAttributes="YES" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xjd-t5-anr">
-                                <rect key="frame" x="20" y="77" width="560" height="16.5"/>
+                                <rect key="frame" x="20" y="74" width="560" height="16.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
@@ -64,18 +64,18 @@
                                 </items>
                             </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mfv-Zq-Dmp">
-                                <rect key="frame" x="20" y="521" width="560" height="17"/>
+                                <rect key="frame" x="20" y="529" width="560" height="17"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="AVr-RN-GDF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="0sy-qh-daG"/>
-                            <constraint firstItem="ZBd-aB-vik" firstAttribute="top" secondItem="Mfv-Zq-Dmp" secondAttribute="bottom" constant="18" id="26W-AS-P6v"/>
+                            <constraint firstItem="ZBd-aB-vik" firstAttribute="top" secondItem="Mfv-Zq-Dmp" secondAttribute="bottom" constant="10" id="26W-AS-P6v"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vKc-xb-Dhl" secondAttribute="trailing" constant="-20" id="4rA-Yg-6Wb"/>
-                            <constraint firstItem="Xjd-t5-anr" firstAttribute="top" secondItem="vKc-xb-Dhl" secondAttribute="bottom" constant="13" id="58y-OO-484"/>
+                            <constraint firstItem="Xjd-t5-anr" firstAttribute="top" secondItem="vKc-xb-Dhl" secondAttribute="bottom" constant="10" id="58y-OO-484"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ZBd-aB-vik" secondAttribute="trailing" constant="-20" id="5Pz-a0-UKQ"/>
                             <constraint firstItem="Mfv-Zq-Dmp" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="5Ug-em-4eD"/>
                             <constraint firstItem="Xjd-t5-anr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="DVX-AR-KZ0"/>
