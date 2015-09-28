@@ -13,6 +13,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var pickedImage: UIImageView!
+    @IBOutlet weak var topToolbar: UIToolbar!
+    @IBOutlet weak var bottomToolbar: UIToolbar!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     
     var activeTextField: UITextField!
     
@@ -24,7 +27,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         topTextField.delegate = self
         bottomTextField.delegate = self
         resetTextFields()
-        
+        disableShareButton()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -55,12 +58,14 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         pickedImage.image = image
+        enableShareButton()
         dismissViewControllerAnimated(true, completion: nil)
     }
 
     @IBAction func cancelMeme(sender: AnyObject) {
         pickedImage.image = nil
         resetTextFields()
+        disableShareButton()
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -142,4 +147,53 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         return keyboardSize.CGRectValue().height
     }
     
+    func generateMeme() -> UIImage {
+        topToolbar.hidden = true
+        bottomToolbar.hidden = true
+        
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.drawViewHierarchyInRect(view.frame, afterScreenUpdates: true)
+        let meme: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        topToolbar.hidden = false
+        bottomToolbar.hidden = false
+        
+        return meme
+    }
+    
+    func save() {
+        //Create the meme
+        let meme = Meme(
+            originalImage: pickedImage.image!,
+            memedImage: generateMeme(),
+            topText: topTextField.text!,
+            bottomText: bottomTextField.text!)
+        
+        print(meme)
+    }
+    
+    func share() {
+        let activityController = UIActivityViewController(activityItems: [generateMeme()], applicationActivities: nil)
+        
+        activityController.completionWithItemsHandler = {(activityType, completed:Bool, returnedItems, activityError) in
+            if(completed) {
+                self.save()
+            }
+        }
+        
+        presentViewController(activityController, animated: true, completion: nil)
+    }
+    
+    @IBAction func shareMeme(sender: AnyObject) {
+        share()
+    }
+    
+    func disableShareButton() {
+        shareButton.enabled = false
+    }
+    
+    func enableShareButton() {
+        shareButton.enabled = true
+    }
 }
