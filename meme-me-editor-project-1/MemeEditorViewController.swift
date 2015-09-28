@@ -176,6 +176,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func share() {
         let activityController = UIActivityViewController(activityItems: [generateMeme()], applicationActivities: nil)
         
+        // Using completion handler described at:
+        // https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIActivityViewController_Class/#//apple_ref/c/tdef/UIActivityViewControllerCompletionWithItemsHandler
+        
         activityController.completionWithItemsHandler = {(activityType, completed:Bool, returnedItems, activityError) in
             if(completed) {
                 self.save()
