@@ -18,11 +18,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var shareButton: UIBarButtonItem!
     
     var activeTextField: UITextField!
+    let defaultTop: String = "TOP"
+    let defaultBottom: String = "BOTTOM"
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         topTextField.delegate = self
         bottomTextField.delegate = self
@@ -33,12 +34,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     override func viewWillAppear(animated: Bool) {
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         configureTextFields()
-        self.subscribeToKeyboardNotifications()
+        subscribeToKeyboardNotifications()
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        self.unsubscribeFromKeyboardNotifications()
+        unsubscribeFromKeyboardNotifications()
     }
     
     
@@ -74,8 +75,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func resetTextFields() {
-        topTextField.text = "TOP"
-        bottomTextField.text = "BOTTOM"
+        topTextField.text = defaultTop
+        bottomTextField.text = defaultBottom
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
@@ -85,8 +86,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func textFieldDidBeginEditing(textField: UITextField) {
         activeTextField = textField
         switch(textField.text!) {
-        case "TOP": textField.text = ""
-        case "BOTTOM": textField.text = ""
+        case defaultTop: textField.text = ""
+        case defaultBottom: textField.text = ""
         default: break
         }
     }
@@ -94,8 +95,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func textFieldDidEndEditing(textField: UITextField) {
         if textField.text?.characters.count == 0 {
             switch(textField) {
-            case topTextField: textField.text = "TOP"
-            case bottomTextField: textField.text = "BOTTOM"
+            case topTextField: textField.text = defaultTop
+            case bottomTextField: textField.text = defaultBottom
             default: textField.text = "YOUR MEME HERE"
             }
         }
@@ -130,14 +131,13 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     func keyboardWillShow(notification: NSNotification) {
         if(activeTextField == bottomTextField) {
-            self.view.frame.origin.y -= getKeyboardHeight(notification)
+            view.frame.origin.y -= getKeyboardHeight(notification)
         }
-        
     }
     
     func keyboardWillHide(notification: NSNotification) {
         if(activeTextField == bottomTextField) {
-            self.view.frame.origin.y += getKeyboardHeight(notification)
+            view.frame.origin.y += getKeyboardHeight(notification)
         }
     }
     
@@ -163,12 +163,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func save() {
-        //Create the meme
-        let meme = Meme(
-            originalImage: pickedImage.image!,
-            memedImage: generateMeme(),
-            topText: topTextField.text!,
-            bottomText: bottomTextField.text!)
+        var meme = Meme()
+        
+        meme.originalImage = pickedImage.image
+        meme.memedImage = generateMeme()
+        meme.topText = topTextField.text
+        meme.bottomText = bottomTextField.text
         
         print(meme)
     }
@@ -182,6 +182,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         activityController.completionWithItemsHandler = {(activityType, completed:Bool, returnedItems, activityError) in
             if(completed) {
                 self.save()
+            } else {
+                print("Save cancelled")
             }
         }
         

@@ -9,19 +9,11 @@
 import Foundation
 import UIKit
 
-class Meme: CustomStringConvertible {
+struct Meme: CustomStringConvertible {
     var originalImage:UIImage!
     var memedImage:UIImage!
     var topText:String!
     var bottomText:String!
-    
-    init(originalImage:UIImage, memedImage:UIImage, topText:String, bottomText:String) {
-        self.originalImage = originalImage
-        self.memedImage = memedImage
-        self.topText = topText
-        self.bottomText = bottomText
-    }
-    
     var description: String {
         return "Meme Image - top: " + topText + " / bottom: " + bottomText
     }
