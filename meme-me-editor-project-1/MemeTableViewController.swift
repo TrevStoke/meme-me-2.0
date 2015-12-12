@@ -39,7 +39,7 @@ class MemeTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        // do the view image thing from here.
+        
     }
 
     
