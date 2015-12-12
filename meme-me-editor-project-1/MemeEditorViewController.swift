@@ -66,6 +66,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         pickedImage.image = nil
         resetTextFields()
         disableShareButton()
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
