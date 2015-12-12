@@ -21,8 +21,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     let defaultTop: String = "TOP"
     let defaultBottom: String = "BOTTOM"
     
-    var model = [Meme]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -171,9 +169,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         meme.topText = topTextField.text
         meme.bottomText = bottomTextField.text
         
-        model.append(meme)
+        let object = UIApplication.sharedApplication().delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
             
-        print(meme)
+        print("Memes saved: " + appDelegate.memes.count.description)
     }
     
     func share() {
