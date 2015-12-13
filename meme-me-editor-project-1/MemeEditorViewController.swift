@@ -84,7 +84,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         pickedImage.image = nil
         resetTextFields()
         disableShareButton()
-        NSNotificationCenter.defaultCenter().postNotificationName("FinishedEditing", object: nil)
+        if (isEditingMeme()) {
+            NSNotificationCenter.defaultCenter().postNotificationName("FinishedEditing", object: nil)
+        }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -198,13 +200,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         if (isEditingMeme()) {
             appDelegate.memes[itemToEdit] = meme
-            print("Meme " + itemToEdit.description + " updated.")
         } else {
             appDelegate.memes.append(meme)
-            print("Memes saved: " + appDelegate.memes.count.description)
         }
-            
-        
     }
     
     func share() {
@@ -216,8 +214,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         activityController.completionWithItemsHandler = {(activityType, completed:Bool, returnedItems, activityError) in
             if(completed) {
                 self.save()
-            } else {
-                print("Save cancelled")
             }
         }
         
