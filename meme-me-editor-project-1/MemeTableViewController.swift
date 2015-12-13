@@ -50,6 +50,20 @@ class MemeTableViewController: UITableViewController {
         return memes.count
     }
     
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            let object = UIApplication.sharedApplication().delegate
+            let appDelegate = object as! AppDelegate
+            appDelegate.memes.removeAtIndex(indexPath.row)
+            tableView.reloadData()
+        }
+    }
+    
     func newMeme() {
         let memeEditor = MemeEditorViewController()
         if let navigationController = self.navigationController {
