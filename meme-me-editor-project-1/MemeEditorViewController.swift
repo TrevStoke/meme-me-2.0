@@ -38,6 +38,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         configureTextFields()
         subscribeToKeyboardNotifications()
@@ -87,7 +88,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         if (isEditingMeme()) {
             NSNotificationCenter.defaultCenter().postNotificationName("FinishedEditing", object: nil)
         }
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -124,18 +125,23 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func configureTextFields() {
+        prepareTextField(topTextField, defaultText: defaultTop)
+        prepareTextField(bottomTextField, defaultText: defaultBottom)
+    }
+    
+    func prepareTextField(textField: UITextField, defaultText: String) {
         let memeTextAttributes = [
-            NSStrokeColorAttributeName: UIColor.blackColor(),
-            NSForegroundColorAttributeName: UIColor.whiteColor(),
-            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-            NSStrokeWidthAttributeName: -3.0,
+            NSStrokeColorAttributeName : UIColor.blackColor(),
+            NSForegroundColorAttributeName : UIColor.whiteColor(),
+            NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 35)!,
+            NSStrokeWidthAttributeName : -3.0
         ]
         
-        topTextField.defaultTextAttributes = memeTextAttributes
-        bottomTextField.defaultTextAttributes = memeTextAttributes
-        
-        topTextField.textAlignment = NSTextAlignment.Center
-        bottomTextField.textAlignment = NSTextAlignment.Center
+        textField.delegate = self
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.text = defaultText
+        textField.autocapitalizationType = .AllCharacters
+        textField.textAlignment = .Center
     }
     
     func subscribeToKeyboardNotifications() {
@@ -152,13 +158,13 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     func keyboardWillShow(notification: NSNotification) {
         if(activeTextField == bottomTextField) {
-            view.frame.origin.y -= getKeyboardHeight(notification)
+            view.frame.origin.y = -getKeyboardHeight(notification)
         }
     }
     
     func keyboardWillHide(notification: NSNotification) {
         if(activeTextField == bottomTextField) {
-            view.frame.origin.y += getKeyboardHeight(notification)
+            view.frame.origin.y = 0
         }
     }
     
