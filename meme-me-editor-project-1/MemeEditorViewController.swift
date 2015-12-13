@@ -16,10 +16,17 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var topToolbar: UIToolbar!
     @IBOutlet weak var bottomToolbar: UIToolbar!
     @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    
+    var memes: [Meme] {
+        return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
+    }
     
     var activeTextField: UITextField!
     let defaultTop: String = "TOP"
     let defaultBottom: String = "BOTTOM"
+    
+    var itemToEdit: Int! = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +41,17 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         configureTextFields()
         subscribeToKeyboardNotifications()
+        
+        if (itemToEdit > -1) {
+            displayMeme(memes[itemToEdit])
+        }
+    }
+    
+    func displayMeme(meme: Meme) {
+        topTextField.text = meme.topText
+        bottomTextField.text = meme.bottomText
+        pickedImage.image = meme.originalImage
+        enableShareButton()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -66,6 +84,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         pickedImage.image = nil
         resetTextFields()
         disableShareButton()
+        NSNotificationCenter.defaultCenter().postNotificationName("FinishedEditing", object: nil)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -162,6 +181,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         return meme
     }
     
+    func isEditingMeme() -> Bool {
+        return itemToEdit > -1
+    }
+    
     func save() {
         var meme = Meme()
         
@@ -172,9 +195,16 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
-        appDelegate.memes.append(meme)
+        
+        if (isEditingMeme()) {
+            appDelegate.memes[itemToEdit] = meme
+            print("Meme " + itemToEdit.description + " updated.")
+        } else {
+            appDelegate.memes.append(meme)
+            print("Memes saved: " + appDelegate.memes.count.description)
+        }
             
-        print("Memes saved: " + appDelegate.memes.count.description)
+        
     }
     
     func share() {

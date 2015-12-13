@@ -8,7 +8,7 @@
         <!--Meme Editor View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MemeEditorViewController" customModule="meme_me_editor_project_1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditorView" id="BYZ-38-t0r" customClass="MemeEditorViewController" customModule="meme_me_editor_project_1" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -60,7 +60,7 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="wFz-Iy-EMr"/>
-                                    <barButtonItem systemItem="cancel" id="y3w-SW-yoW">
+                                    <barButtonItem systemItem="done" id="y3w-SW-yoW">
                                         <connections>
                                             <action selector="cancelMeme:" destination="BYZ-38-t0r" id="p8d-UZ-lz6"/>
                                         </connections>
@@ -118,6 +118,7 @@
                         <outlet property="bottomTextField" destination="Mfv-Zq-Dmp" id="HlS-ce-ZIZ"/>
                         <outlet property="bottomToolbar" destination="ZBd-aB-vik" id="rsg-1D-fcB"/>
                         <outlet property="cameraButton" destination="bmF-or-H2m" id="yu1-0J-E5j"/>
+                        <outlet property="cancelButton" destination="y3w-SW-yoW" id="Wdf-VP-ZOb"/>
                         <outlet property="pickedImage" destination="AVr-RN-GDF" id="AVp-T1-m6T"/>
                         <outlet property="shareButton" destination="pgg-er-DW6" id="GfH-qY-kd0"/>
                         <outlet property="topTextField" destination="Xjd-t5-anr" id="LA5-Nm-qoO"/>

@@ -17,11 +17,6 @@ class MemeTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let navigationController = self.navigationController {
-            navigationController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New",
-                style: .Plain, target: self, action: "newMeme")
-        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -32,7 +27,7 @@ class MemeTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCellWithIdentifier("memeCell")
-        cell?.textLabel?.text = memes[indexPath.row].topText
+        cell?.textLabel?.text = memes[indexPath.row].topText + " ... " + memes[indexPath.row].bottomText
         cell?.imageView?.image = memes[indexPath.row].memedImage
         
         return cell!
@@ -41,7 +36,7 @@ class MemeTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let storyboard = UIStoryboard (name: "Main", bundle: nil)
         let detailViewController = storyboard.instantiateViewControllerWithIdentifier("DetailView") as! MemeDetailViewController
-        detailViewController.meme = memes[indexPath.item]
+        detailViewController.memeIndex = indexPath.item
         navigationController?.pushViewController(detailViewController, animated: true)
     }
 
